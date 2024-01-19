@@ -68,73 +68,73 @@
 
 
 typedef struct {
-	us_frame_s			raw;
-	struct v4l2_buffer	buf;
-	int					dma_fd;
-	bool				grabbed;
+    us_frame_s			raw;
+    struct v4l2_buffer	buf;
+    int					dma_fd;
+    bool				grabbed;
 } us_hw_buffer_s;
 
 typedef struct {
-	int					fd;
-	unsigned			width;
-	unsigned			height;
-	unsigned			format;
-	unsigned			stride;
-	unsigned			hw_fps;
-	unsigned			jpeg_quality;
-	size_t				raw_size;
-	unsigned			n_bufs;
-	us_hw_buffer_s		*hw_bufs;
-	enum v4l2_buf_type	capture_type;
-	bool				capturing;
-	bool				persistent_timeout_reported;
+    int					fd;
+    unsigned			width;
+    unsigned			height;
+    unsigned			format;
+    unsigned			stride;
+    unsigned			hw_fps;
+    unsigned			jpeg_quality;
+    size_t				raw_size;
+    unsigned			n_bufs;
+    us_hw_buffer_s		*hw_bufs;
+    enum v4l2_buf_type	capture_type;
+    bool				capturing;
+    bool				persistent_timeout_reported;
 } us_device_runtime_s;
 
 typedef enum {
-	CTL_MODE_NONE = 0,
-	CTL_MODE_VALUE,
-	CTL_MODE_AUTO,
-	CTL_MODE_DEFAULT,
+    CTL_MODE_NONE = 0,
+    CTL_MODE_VALUE,
+    CTL_MODE_AUTO,
+    CTL_MODE_DEFAULT,
 } us_control_mode_e;
 
 typedef struct {
-	us_control_mode_e	mode;
-	int					value;
+    us_control_mode_e	mode;
+    int					value;
 } us_control_s;
 
 typedef struct {
-	us_control_s	brightness;
-	us_control_s	contrast;
-	us_control_s	saturation;
-	us_control_s	hue;
-	us_control_s	gamma;
-	us_control_s	sharpness;
-	us_control_s	backlight_compensation;
-	us_control_s	white_balance;
-	us_control_s	gain;
-	us_control_s	color_effect;
-	us_control_s	rotate;
-	us_control_s	flip_vertical;
-	us_control_s	flip_horizontal;
+    us_control_s	brightness;
+    us_control_s	contrast;
+    us_control_s	saturation;
+    us_control_s	hue;
+    us_control_s	gamma;
+    us_control_s	sharpness;
+    us_control_s	backlight_compensation;
+    us_control_s	white_balance;
+    us_control_s	gain;
+    us_control_s	color_effect;
+    us_control_s	rotate;
+    us_control_s	flip_vertical;
+    us_control_s	flip_horizontal;
 } us_controls_s;
 
 typedef struct {
-	char				*path;
-	unsigned			input;
-	unsigned			width;
-	unsigned			height;
-	unsigned			format;
-	unsigned			jpeg_quality;
-	v4l2_std_id			standard;
-	enum v4l2_memory	io_method;
-	bool				dv_timings;
-	unsigned			n_bufs;
-	unsigned			desired_fps;
-	size_t				min_frame_size;
-	bool				persistent;
-	unsigned			timeout;
-	us_controls_s 		ctl;
-	us_device_runtime_s *run;
+    char				*path;
+    unsigned			input;
+    unsigned			width;
+    unsigned			height;
+    unsigned			format;
+    unsigned			jpeg_quality;
+    v4l2_std_id			standard;
+    enum v4l2_memory	io_method;
+    bool				dv_timings;
+    unsigned			n_bufs;
+    unsigned			desired_fps;
+    size_t				min_frame_size;
+    bool				persistent;
+    unsigned			timeout;
+    us_controls_s 		ctl;
+    us_device_runtime_s *run;
 } us_device_s;
 
 
