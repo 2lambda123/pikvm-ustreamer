@@ -46,15 +46,32 @@ You need to download the µStreamer onto your system and build it from the sourc
 ### Preconditions
 You'll need  ```make```, ```gcc```, ```libevent``` with ```pthreads``` support, ```libjpeg9```/```libjpeg-turbo``` and ```libbsd``` (only for Linux).
 
-* Arch: `sudo pacman -S libevent libjpeg-turbo libutil-linux libbsd`.
-* Raspberry OS Bullseye: `sudo apt install libevent-dev libjpeg62-turbo libbsd-dev`. Add `libgpiod-dev` for `WITH_GPIO=1` and `libsystemd-dev` for `WITH_SYSTEMD=1` and `libasound2-dev libspeex-dev libspeexdsp-dev libopus-dev` for `WITH_JANUS=1`.
-* Raspberry OS Bookworm: same as previous but replace `libjpeg62-turbo` to `libjpeg62-turbo-dev`.
-* Debian/Ubuntu: `sudo apt install build-essential libevent-dev libjpeg-dev libbsd-dev`.
-* Alpine: `sudo apk add libevent-dev libbsd-dev libjpeg-turbo-dev musl-dev`. Build with `WITH_PTHREAD_NP=0`.
+* Arch Linux:
+```
+$ sudo pacman -S libevent libjpeg-turbo libutil-linux libbsd
+```
+* Raspberry OS Bullseye:
+```bash
+$ sudo apt install libevent-dev libjpeg62-turbo libbsd-dev libgpiod-dev libsystemd-dev libasound2-dev libspeex-dev libspeexdsp-dev libopus-dev
+```
+* Raspberry OS Bookworm:
+```bash
+$ sudo apt install libevent-dev libjpeg62-turbo-dev libbsd-dev libgpiod-dev libsystemd-dev libasound2-dev libspeex-dev libspeexdsp-dev libopus-dev
+```
+* Debian/Ubuntu:
+```bash
+$ sudo apt install build-essential libevent-dev libjpeg-dev libbsd-dev
+```
+* Alpine:
+```bash
+$ sudo apk add libevent-dev libbsd-dev libjpeg-turbo-dev musl-dev
+```
 
 To enable GPIO support install [libgpiod](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/about) and pass option ```WITH_GPIO=1```. If the compiler reports about a missing function ```pthread_get_name_np()``` (or similar), add option ```WITH_PTHREAD_NP=0``` (it's enabled by default). For the similar error with ```setproctitle()``` add option ```WITH_SETPROCTITLE=0```.
 
-### Make
+### Usage in GitHub Actions Workflow
+
+Include the following command in the GitHub Actions workflow to verify the ustreamer installation and display help information:
 The most convenient process is to clone the µStreamer Git repository onto your system. If you don't have Git installed and don't want to install it either, you can download and unzip the sources from GitHub using `wget https://github.com/pikvm/ustreamer/archive/refs/heads/master.zip`.
 
 ```
